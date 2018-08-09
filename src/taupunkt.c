@@ -26,21 +26,24 @@ static void Update_a_b(struct Tp* me)
 
 }
 
-/** Calculate SDD(T)
+/** Berechnung Saettigungsdampfdruck SDD(T)
+ * \param me Taupunkt data
  */
 static void Calc_SDD(struct Tp* me)
 {
 	me->SDD = 6.1078 * pow(10, (me->a * me->T / (me->b + me->T)));
 }
 
-/** Calculate DD(r, T)
+/** Berechnung Dampfdruck DD(r, T)
+ * \param me Taupunkt data
  */
 static void Calc_DD(struct Tp* me)
 {
 	me->DD = me->r / 100.0 * me->SDD;
 }
 
-/** Calculate TD(r, T)
+/** Berechnung Taupunkttemperatur TD(r, T)
+ * \param me Taupunkt data
  */
 static void Calc_TD(struct Tp* me)
 {
@@ -48,7 +51,7 @@ static void Calc_TD(struct Tp* me)
 	me->TD = me->b * v / (me->a - v);
 }
 
-/** Initialize calculation.
+/** Initialisierung Taupunktberechnung.
  * \param me Taupunkt data
  * \param T Temperatur in °C
  * \param r rel. Feuchte
@@ -66,6 +69,7 @@ void Tp_Init(struct Tp* me, float T, float r)
 }
 
 /** Update rel. Feuchte.
+ * Neuberechnung des Taupunkts nach Aenderung der rel. Feuchte.
  * \param me Taupunkt data
  * \param r rel. Feuchte
  */
@@ -79,6 +83,7 @@ void Tp_Update_r(struct Tp* me, float r)
 }
 
 /** Update Temperatur.
+ * Neuberechnung des Taupunkts nach Aenderung der Temperatur.
  * \param me Taupunkt data
  * \param T Temperatur in °C
  */
