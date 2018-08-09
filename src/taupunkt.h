@@ -16,7 +16,7 @@
  * Konstanten:
  *   R* = 8314.3 J/(kmol*K) (universelle Gaskonstante)
  *   mw = 18.016 kg/kmol (Molekulargewicht des Wasserdampfes)
- * 
+ *
  * Gleichungen:
  *   SDD(T) = 6.1078 * 10^((a*T)/(b+T))
  *   DD(r,T) = r/100 * SDD(T)
