@@ -8,7 +8,7 @@
 
 int main(int argc, char* argv[])
 {
-	setlocale(LC_ALL, "");  // set default locale of the platform
+	setlocale(LC_ALL, "");
 	if (argc == 3) {
 		struct Tp tp;
 		float T = atof(argv[1]);
