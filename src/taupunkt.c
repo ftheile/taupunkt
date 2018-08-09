@@ -98,6 +98,6 @@ void Tp_Update_T(struct Tp* me, float T)
 void Tp_Print(const struct Tp* me)
 {
 	if (me) {
-		printf("TD(%.1f°C, %.1f%%) = %f°C\n", me->T, me->r, me->TD);
+		printf("TD(%.1f°C, %.1f%%) = %.1f°C\n", me->T, me->r, me->TD);
 	}
 }
