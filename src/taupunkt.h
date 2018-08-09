@@ -2,11 +2,11 @@
  * Taupunktberechnung aus Temperatur und rel. Luftfeuchte.
  *
  * Eingaben:
- *   * Temperatur T [캜]
+ *   * Temperatur T [째C]
  *   * rel. Feuchte r [%]
  *
  * Ausgabe:
- *   * Taupunkttemperatur TD [캜]
+ *   * Taupunkttemperatur TD [째C]
  *
  * Parameter:
  *   a = 7.5, b = 237.3 fuer T >= 0
@@ -31,9 +31,9 @@ struct Tp {
 	float a;    //!< Temperaturabh. Konstante, siehe oben
 	float b;    //!< Temperaturabh. Konstante, siehe oben
 	float r;    //!< [in] relative Luftfeuchte
-	float T;    //!< [in] Temperatur [캜]
+	float T;    //!< [in] Temperatur [째C]
 	float SDD;  //!< Saettigungsdampfdruck [hPa]
-	float TD;   //!< [out] Taupunkttemperatur [캜]
+	float TD;   //!< [out] Taupunkttemperatur [째C]
 };
 
 void Tp_Init(struct Tp* me, float T, float r);

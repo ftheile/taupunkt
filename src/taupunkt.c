@@ -50,7 +50,7 @@ static void Calc_TD(struct Tp* me)
 
 /** Initialisierung Taupunktberechnung.
  * \param me Taupunkt data
- * \param T Temperatur in 캜
+ * \param T Temperatur in 째C
  * \param r rel. Feuchte
  */
 void Tp_Init(struct Tp* me, float T, float r)
@@ -80,7 +80,7 @@ void Tp_Update_r(struct Tp* me, float r)
 /** Update Temperatur.
  * Neuberechnung des Taupunkts nach Aenderung der Temperatur.
  * \param me Taupunkt data
- * \param T Temperatur in 캜
+ * \param T Temperatur in 째C
  */
 void Tp_Update_T(struct Tp* me, float T)
 {
@@ -98,6 +98,6 @@ void Tp_Update_T(struct Tp* me, float T)
 void Tp_Print(const struct Tp* me)
 {
 	if (me) {
-		printf("TD(%.1f캜, %.1f%%) = %.1f캜\n", me->T, me->r, me->TD);
+		printf("TD(%.1f째C, %.1f%%) = %.1f째C\n", me->T, me->r, me->TD);
 	}
 }

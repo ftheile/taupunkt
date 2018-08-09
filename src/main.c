@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
 	} else {
 		printf("Taupunktberechnung aus Temperatur und rel. Luftfeuchte.\n\n");
 		printf("%s T r\n", argv[0]);
-		printf("  T  Temperatur [°C]\n");
+		printf("  T  Temperatur [Â°C]\n");
 		printf("  r  rel. Luftfeuchte [%%]\n\n");
 		return -1;
 	}
