@@ -48,41 +48,60 @@ static void Calc_TD(struct Tp* me)
  * \param me Taupunkt data
  * \param T Temperatur in °C
  * \param r rel. Feuchte
+ * \retval true OK
+ * \retval false Fehler (me oder r ungueltig)
  */
-void Tp_Init(struct Tp* me, float T, float r)
+bool Tp_Init(struct Tp* me, float T, float r)
 {
-	if (me) {
+	if (me && (r > RF_MIN) && (r <= RF_MAX)) {
 		me->T = T;
 		me->r = r;
 		Calc_SDD(me);
 		Calc_TD(me);
+		return true;
+	} else {
+		return false;
 	}
 }
 
 /** Update rel. Feuchte.
  * Neuberechnung des Taupunkts nach Aenderung der rel. Feuchte.
  * \param me Taupunkt data
- * \param r rel. Feuchte
+ * \param r rel. Feuchte [%]
+ * \retval true OK
+ * \retval false Fehler (me oder r ungueltig)
  */
-void Tp_Update_r(struct Tp* me, float r)
+bool Tp_Update_r(struct Tp* me, float r)
 {
-	if (me && (me->r != r)) {
-		me->r = r;
-		Calc_TD(me);
+	if (me && (r > RF_MIN) && (r <= RF_MAX)) {
+		if (me->r != r) {
+			me->r = r;
+			Calc_TD(me);
+		}
+		return true;
+	} else {
+		return false;
 	}
 }
 
 /** Update Temperatur.
  * Neuberechnung des Taupunkts nach Aenderung der Temperatur.
  * \param me Taupunkt data
- * \param T Temperatur in °C
+ * \param T Temperatur [°C]
+ * \retval true OK
+ * \retval false Fehler (me ungueltig)
  */
-void Tp_Update_T(struct Tp* me, float T)
+bool Tp_Update_T(struct Tp* me, float T)
 {
-	if (me && (me->T != T)) {
-		me->T = T;
-		Calc_SDD(me);
-		Calc_TD(me);
+	if (me) {
+		if (me->T != T) {
+			me->T = T;
+			Calc_SDD(me);
+			Calc_TD(me);
+		}
+		return true;
+	} else {
+		return false;
 	}
 }
 

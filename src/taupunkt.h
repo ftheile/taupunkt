@@ -25,6 +25,8 @@
 #ifndef _TAUPUNKT_H_
 #define _TAUPUNKT_H_
 
+#include <stdbool.h>
+
 /** Data to calculate the taupunkt.
  */
 struct Tp {
@@ -36,9 +38,9 @@ struct Tp {
 	float TD;   //!< [out] Taupunkttemperatur [°C]
 };
 
-void Tp_Init(struct Tp* me, float T, float r);
-void Tp_Update_r(struct Tp* me, float r);
-void Tp_Update_T(struct Tp* me, float T);
+bool Tp_Init(struct Tp* me, float T, float r);
+bool Tp_Update_r(struct Tp* me, float r);
+bool Tp_Update_T(struct Tp* me, float T);
 void Tp_Print(const struct Tp* me);
 
 #endif

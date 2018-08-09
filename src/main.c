@@ -13,9 +13,13 @@ int main(int argc, char* argv[])
 		struct Tp tp;
 		float T = atof(argv[1]);
 		float r = atof(argv[2]);
-		Tp_Init(&tp, T, r);
-		Tp_Print(&tp);
-		return 0;
+		if (Tp_Init(&tp, T, r)) {
+			Tp_Print(&tp);
+			return 0;
+		} else {
+			printf("Ungueltige Eingaben!\n");
+			return -1;
+		}
 	} else {
 		printf("Taupunktberechnung aus Temperatur und rel. Luftfeuchte.\n\n");
 		printf("%s T r\n", argv[0]);
