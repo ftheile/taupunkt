@@ -32,7 +32,6 @@ struct Tp {
 	float b;    //!< Temperaturabh. Konstante, siehe oben
 	float r;    //!< [in] relative Luftfeuchte
 	float T;    //!< [in] Temperatur [°C]
-	float DD;   //!< Dampfdruck [hPa]
 	float SDD;  //!< Saettigungsdampfdruck [hPa]
 	float TD;   //!< [out] Taupunkttemperatur [°C]
 };

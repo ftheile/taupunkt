@@ -34,15 +34,7 @@ static void Update_a_b(struct Tp* me)
  */
 static void Calc_SDD(struct Tp* me)
 {
-	me->SDD = 6.1078 * pow(10, (me->a * me->T / (me->b + me->T)));
-}
-
-/** Berechnung Dampfdruck DD(r, T)
- * \param me Taupunkt data
- */
-static void Calc_DD(struct Tp* me)
-{
-	me->DD = me->r / 100.0 * me->SDD;
+	me->SDD = 6.1078 * pow(10, me->a * me->T / (me->b + me->T));
 }
 
 /** Berechnung Taupunkttemperatur TD(r, T)
@@ -50,7 +42,8 @@ static void Calc_DD(struct Tp* me)
  */
 static void Calc_TD(struct Tp* me)
 {
-	float v = log10(me->DD / 6.1078);
+	float DD = me->r / 100.0 * me->SDD;
+	float v = log10(DD / 6.1078);
 	me->TD = me->b * v / (me->a - v);
 }
 
@@ -66,7 +59,6 @@ void Tp_Init(struct Tp* me, float T, float r)
 		me->r = r;
 		Update_a_b(me);
 		Calc_SDD(me);
-		Calc_DD(me);
 		Calc_TD(me);
 	}
 }
@@ -80,7 +72,6 @@ void Tp_Update_r(struct Tp* me, float r)
 {
 	if (me && (me->r != r)) {
 		me->r = r;
-		Calc_DD(me);
 		Calc_TD(me);
 	}
 }
@@ -96,7 +87,6 @@ void Tp_Update_T(struct Tp* me, float T)
 		me->T = T;
 		Update_a_b(me);
 		Calc_SDD(me);
-		Calc_DD(me);
 		Calc_TD(me);
 	}
 }
