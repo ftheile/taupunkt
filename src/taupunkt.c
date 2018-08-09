@@ -9,6 +9,9 @@
 #define R_STAR 8314.3   /**< Universelle Gaskonstante [J / (kmol*K)] */
 #define MW       18.016 /**< Molekulargewicht des Wasserdampfes [kg / kmol] */
 
+#define RF_MIN    0.0
+#define RF_MAX  100.0
+
 /** Berechnung Saettigungsdampfdruck SDD(T)
  * \param me Taupunkt data
  */
