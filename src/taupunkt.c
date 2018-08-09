@@ -3,6 +3,7 @@
  */
 #include "taupunkt.h"
 #include <math.h>
+#include <stdio.h>
 
 // Konstanten:
 #define R_STAR 8314.3   /**< Universelle Gaskonstante [J / (kmol*K)] */
@@ -88,5 +89,15 @@ void Tp_Update_T(struct Tp* me, float T)
 		Update_a_b(me);
 		Calc_SDD(me);
 		Calc_TD(me);
+	}
+}
+
+/** Ausgabe der Berechnung.
+ * \param me Taupunkt data
+ */
+void Tp_Print(const struct Tp* me)
+{
+	if (me) {
+		printf("TD(%.1f°C, %.1f%%) = %f°C\n", me->T, me->r, me->TD);
 	}
 }

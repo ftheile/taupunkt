@@ -39,5 +39,6 @@ struct Tp {
 void Tp_Init(struct Tp* me, float T, float r);
 void Tp_Update_r(struct Tp* me, float r);
 void Tp_Update_T(struct Tp* me, float T);
+void Tp_Print(const struct Tp* me);
 
 #endif
