@@ -8,18 +8,21 @@
 #define R_STAR 8314.3   /**< Universelle Gaskonstante [J / (kmol*K)] */
 #define MW       18.016 /**< Molekulargewicht des Wasserdampfes [kg / kmol] */
 
+/** Update interne Konstanten.
+ * \param me Taupunkt data
+ */
 static void Update_a_b(struct Tp* me)
 {
 	if (me->T >= 0.0) {
 		me->a = 7.5;
 		me->b = 237.3;
 	} else {
-// ??? Über Wasser, über Eis ???
-		// für T < 0 über Wasser (Taupunkt):
+// ??? Ueber Wasser, ueber Eis ???
+		// fuer T < 0 ueber Wasser (Taupunkt):
 		me->a = 7.6;
 		me->b = 240.7;
 
-		// für T < 0 über Eis (Frostpunkt):
+		// fuer T < 0 ueber Eis (Frostpunkt):
 //		me->a = 9.5;
 //		me->b = 265.5;
 	}

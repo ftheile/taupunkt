@@ -2,11 +2,11 @@
  * Taupunktberechnung aus Temperatur und rel. Luftfeuchte.
  *
  * Eingaben:
- *   * Temperatur T
- *   * rel. Feuchte r
+ *   * Temperatur T [°C]
+ *   * rel. Feuchte r [%]
  *
  * Ausgabe:
- *   * Taupunkttemperatur TD
+ *   * Taupunkttemperatur TD [°C]
  *
  * Parameter:
  *   a = 7.5, b = 237.3 fuer T >= 0
@@ -17,10 +17,9 @@
  *   R* = 8314.3 J/(kmol*K) (universelle Gaskonstante)
  *   mw = 18.016 kg/kmol (Molekulargewicht des Wasserdampfes)
  * 
- * Equations:
+ * Gleichungen:
  *   SDD(T) = 6.1078 * 10^((a*T)/(b+T))
  *   DD(r,T) = r/100 * SDD(T)
- *   r(T,TD) = 100 * SDD(TD) / SDD(T)
  *   TD(r,T) = b*v/(a-v) mit v(r,T) = log10(DD(r,T)/6.1078)
  */
 #ifndef _TAUPUNKT_H_
