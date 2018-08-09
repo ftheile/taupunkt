@@ -9,16 +9,17 @@
 #define R_STAR 8314.3   /**< Universelle Gaskonstante [J / (kmol*K)] */
 #define MW       18.016 /**< Molekulargewicht des Wasserdampfes [kg / kmol] */
 
-/** Update interne Konstanten.
+/** Berechnung Saettigungsdampfdruck SDD(T)
  * \param me Taupunkt data
  */
-static void Update_a_b(struct Tp* me)
+static void Calc_SDD(struct Tp* me)
 {
+	// Update Konstanten:
 	if (me->T >= 0.0) {
 		me->a = 7.5;
 		me->b = 237.3;
 	} else {
-// ??? Ueber Wasser, ueber Eis ???
+		// ??? Ueber Wasser, ueber Eis ???
 		// fuer T < 0 ueber Wasser (Taupunkt):
 		me->a = 7.6;
 		me->b = 240.7;
@@ -27,14 +28,6 @@ static void Update_a_b(struct Tp* me)
 //		me->a = 9.5;
 //		me->b = 265.5;
 	}
-
-}
-
-/** Berechnung Saettigungsdampfdruck SDD(T)
- * \param me Taupunkt data
- */
-static void Calc_SDD(struct Tp* me)
-{
 	me->SDD = 6.1078 * pow(10, me->a * me->T / (me->b + me->T));
 }
 
@@ -58,7 +51,6 @@ void Tp_Init(struct Tp* me, float T, float r)
 	if (me) {
 		me->T = T;
 		me->r = r;
-		Update_a_b(me);
 		Calc_SDD(me);
 		Calc_TD(me);
 	}
@@ -86,7 +78,6 @@ void Tp_Update_T(struct Tp* me, float T)
 {
 	if (me && (me->T != T)) {
 		me->T = T;
-		Update_a_b(me);
 		Calc_SDD(me);
 		Calc_TD(me);
 	}
