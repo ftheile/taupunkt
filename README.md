@@ -1,6 +1,6 @@
 # Taupunktberechnung
 
-Berechnung des Taupunbktes aus Temperatur und rel. Luftfeuchte.
+Berechnung des Taupunktes aus Temperatur und rel. Luftfeuchte.
 
 Quellen:
   * https://www.wetterochs.de/wetter/feuchte.html
